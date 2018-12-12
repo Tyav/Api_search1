@@ -19,4 +19,21 @@ $('#search').click(function(){
 	})
 })
 
+$('#search2').click(function(){
+	$('#result').empty()
+
+	var input = $('#entry2').val();
+
+
+	fetch('https://jsonplaceholder.typicode.com/todos').then(response => response.json())
+	.then(function(json){
+		$.each(json, function(i, todo){
+			if (todo.id == parseInt(input)){
+				$('#result').append('<p>'+'UserId: ' + todo.userId+ ', TodoId: ' 
+					+ todo.id +', Todo Title: ' + todo.title + ', completed: '+ todo.completed );
+			}
+		})
+			
+	})
+})
 
